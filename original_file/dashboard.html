@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+*{ margin:0; padding:0;}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+.main {
+    width:100%;
+	margin-top:20px;
+    
+}
+.column{
+    float: left;
+	width: 33.3333%;
+	padding:0 20px;
+	text-align:center;
+}
+.column div{ padding:20px 0px;}
+.column_1 div{
+    /* background-color: #3F5E6F; */
+    border-color: #36505F;
+    color: #FFFFFF;
+}
+.column_2 div{
+    /* background-color: #006848; */
+    border-color: #004E36;
+    color: #FFFFFF;
+}
+.column_3 div{
+    /* background-color: #D76300; */
+    border-color: #BE5700;
+    color: #FFFFFF;
+}
+@media screen and (max-width:1000px)
+{
+	.column{ width:100% !important; margin-bottom:10px}
+}
+</style>
+</head>
+
+<body>
+<div class="main">
+	<div id="container" class="column column_1"><div>Why Jaspersoft</div></div>
+	<div id="container2" class="column column_2"><div>Register for the Demo</div></div>
+	<div id="container3" class="column column_3"><div>Quick-Start Guide</div></div>
+</div>
+
+<script type="text/javascript" src="http://localhost:8080/jasperserver-pro/scripts/client/visualize.js?_opt=false&logLevel=debug"></script> 
+<script type="text/javascript">
+visualize({ 
+server: "http://localhost:8080/jasperserver-pro/",
+auth: { 
+name: "superuser", 
+password: "superuser", 
+organization:"organization_1"
+//timezone: "Europe/Helsinki" 
+} 
+}, 
+
+function (v) { 
+
+//'v' it's a client to JRS instance initialized above 
+// with a session established for joeuser from organization_1 
+//alert("Welcome! JRS Authentication successful."); 
+
+v("#container").report({resource:"/public/Sample/MeterGauge" });
+v("#container2").report({resource:"/public/Sample/TemperatureGauge" });  
+ 
+},
+ 
+function (err) { 
+alert("Auth error! Server said: " + err.message); 
+}); 
+
+
+</script>
+
+
+</body>
+
+
+</html>
